@@ -1,0 +1,250 @@
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# ============================================
+# DEPENDENCIES
+# ============================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ============================================
+# EXPO / REACT NATIVE
+# ============================================
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+.expo-shared/
+
+# Metro bundler
+.metro-health-check*
+.metro-bundler-check*
+
+# React Native
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+
+# Generated native folders
+/ios
+/android
+/windows
+
+# ============================================
+# ENVIRONMENT VARIABLES
+# ============================================
+.env*.local
+.env
+!.env.example
+!.env.template
+
+# ============================================
+# BUILD OUTPUTS
+# ============================================
+build/
+dist/
+out/
+.next/
+.nuxt/
+.vuepress/dist/
+.cache/
+.parcel-cache/
+
+# ============================================
+# LOGS
+# ============================================
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ============================================
+# RUNTIME DATA
+# ============================================
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# ============================================
+# COVERAGE DIRECTORY
+# ============================================
+coverage/
+*.lcov
+.nyc_output/
+
+# ============================================
+# DEPENDENCY LOCK FILES (keep one)
+# ============================================
+# Keep package-lock.json but ignore others if you use npm
+# yarn.lock
+# pnpm-lock.yaml
+
+# ============================================
+# IDE AND EDITORS
+# ============================================
+# VSCode
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/snippets.json
+
+# WebStorm/IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ============================================
+# OPERATING SYSTEM
+# ============================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ============================================
+# TYPESCRIPT
+# ============================================
+*.tsbuildinfo
+.dts/
+
+# ============================================
+# TESTING
+# ============================================
+.jest/
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+test-results.xml
+
+# ============================================
+# BUNDLERS
+# ============================================
+# Webpack
+.webpack/
+.webpack.cache/
+
+# Vite
+.vite/
+
+# Rollup
+.rollup.cache/
+
+# ============================================
+# MISC
+# ============================================
+*.pem
+*.key
+*.crt
+*.pfx
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+.temp/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Cache directories
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+
+# Generated documentation
+docs/build/
+
+# Backup files
+*.bak
+*.backup
+
+# ============================================
+# SPECIFIC TO THIS PROJECT
+# ============================================
+app-example
+
+# ============================================
+# SECURITY
+# ============================================
+*.pem
+*.key
+*.p12
+*.p8
+*.jks
+*.mobileprovision
+*.pfx
+*.crt
+*.cer
