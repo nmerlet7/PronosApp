@@ -210,6 +210,13 @@ export default function MatchesScreen({ tournamentId }: MatchesScreenProps) {
       >
         <Ionicons name="cloud-download" size={24} color="white" />
       </TouchableOpacity>
+
+      <TouchableOpacity
+        style={[styles.fab, styles.syncFab]}
+        onPress={() => router.push(`/tournament/${tournamentId}/sync`)}
+      >
+        <Ionicons name="sync" size={24} color="white" />
+      </TouchableOpacity>
     </View>
   );
 }
@@ -363,5 +370,9 @@ const styles = StyleSheet.create({
   apiFab: {
     bottom: 222,
     backgroundColor: '#8B5CF6',
+  },
+  syncFab: {
+    bottom: 288,
+    backgroundColor: '#10B981',
   },
 });

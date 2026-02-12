@@ -380,6 +380,11 @@ export default function ModalScreen() {
           onChangeText={setTeamName}
           placeholder="Ex: France"
         />
+        <Text style={styles.helpText}>
+          1. Inscrivez-vous sur api-football.com
+          2. Obtenez votre clé API gratuite
+          3. Copiez-collez votre clé ici
+        </Text>
       </View>
 
       <View style={styles.inputGroup}>
@@ -643,5 +648,14 @@ const styles = StyleSheet.create({
     color: '#6B7280',
     marginLeft: 8,
     textAlign: 'center',
+  },
+  helpText: {
+    fontSize: 14,
+    color: '#6B7280',
+    backgroundColor: '#F3F4F6',
+    padding: 12,
+    borderRadius: 8,
+    marginBottom: 24,
+    lineHeight: 20,
   },
 });

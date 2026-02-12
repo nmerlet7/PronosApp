@@ -20,7 +20,7 @@ export default function TournamentScreen() {
   ]);
 
   useEffect(() => {
-    loadTournament();
+    initializeAndLoadTournaments();
   }, [id]);
 
   const loadTournament = async () => {
@@ -124,3 +124,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+function initializeAndLoadTournaments() {
+  throw new Error('Function not implemented.');
+}
+

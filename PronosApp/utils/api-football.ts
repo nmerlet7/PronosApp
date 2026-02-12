@@ -1,6 +1,6 @@
 // Configuration pour api-football.com
 const API_BASE_URL = 'https://v3.football.api-sports.io';
-const API_KEY = 'YOUR_API_KEY'; // Remplace par ta vraie clé API
+const API_KEY = 'e23b2b39ff9055b1744f5b6c6d61aba8';
 
 // Types pour les données de l'API
 export interface ApiTeam {
@@ -190,12 +190,12 @@ class ApiFootballService {
         } : undefined,
       } : undefined,
       externalId: apiFixture.fixture.id,
-      date: apiFixture.fixture.date,
+      date: new Date(apiFixture.fixture.date).toLocaleString(),
     };
   }
 
   // Convertir le statut de l'API vers notre format
-  private mapApiStatusToMatchStatus(apiStatus: string): 'upcoming' | 'in_progress' | 'finished' {
+  mapApiStatusToMatchStatus(apiStatus: string): 'upcoming' | 'in_progress' | 'finished' {
     switch (apiStatus.toLowerCase()) {
       case 'not started':
       case 'time to be defined':

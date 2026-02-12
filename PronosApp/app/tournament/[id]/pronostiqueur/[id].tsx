@@ -225,7 +225,9 @@ export default function PronostiqueurDetailScreen() {
           {pronostics.length === 0 ? (
             <View style={styles.emptyContainer}>
               <Ionicons name="analytics-outline" size={64} color="#9CA3AF" />
-              <Text style={styles.emptyText}>Aucun pronostic</Text>
+              <Text style={styles.noPronosticsText}>
+                Aucun pronostic pour le moment
+              </Text>
               <Text style={styles.emptySubtext}>
                 Ce pronostiqueur n'a pas encore fait de pronostics
               </Text>
@@ -416,6 +418,11 @@ const styles = StyleSheet.create({
   halftimeResult: {
     fontSize: 12,
     color: '#6B7280',
-    marginTop: 2,
+    marginTop: 4,
+  },
+  noPronosticsText: {
+    fontSize: 16,
+    color: '#6B7280',
+    marginTop: 8,
   },
 });
