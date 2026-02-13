@@ -10,10 +10,12 @@ export type Competition = {
 export type Team = {
     id? : number,
     name : string,
+    image? : string,
 }
 
 export type Match = {
     id? : number,
+    name? : string,
     home : Team,
     away : Team,
     date : Date | string | null,
@@ -25,6 +27,7 @@ export type Result = {
     winner? : Team,
     halfTime? : Score,
     fullTime? : Score,
+    afterPenalties? : Score,
 }
 
 export type Score = {
@@ -35,6 +38,8 @@ export type Score = {
 export type Bettor = {
     id? : number,
     name : string,
+    photo? : string,
+    totalPoints? : number,
 }
 
 export type Bet = {
@@ -42,4 +47,21 @@ export type Bet = {
     bettor: Bettor,
     match : Match,
     result : Result,
+    points?: number,
+    isLocked?: boolean,
+}
+
+export type RankingEntry = {
+    bettor: Bettor,
+    points: number,
+    position: number,
+}
+
+export type PointsBreakdown = {
+    winnerCorrect: number,
+    halfTimeScoreCorrect: number,
+    fullTimeScoreCorrect: number,
+    halfTimeGoalsPenalty: number,
+    fullTimeGoalsPenalty: number,
+    total: number,
 }

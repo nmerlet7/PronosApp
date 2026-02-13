@@ -7,8 +7,8 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="(home)" options={{ headerShown: false }} />
         <Stack.Screen
-          name="competitions/[id]"
-          options={{ headerShown: true, title: "Competition" }}
+          name="competitions/index"
+          options={{ headerShown: true, title: "Compétitions" }}
         />
         <Stack.Screen
           name="bettors/[id]"

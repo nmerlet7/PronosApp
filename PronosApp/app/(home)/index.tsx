@@ -8,13 +8,18 @@ export default function Competitions() {
   const { competitions } = useData();
   return (
     <View style={styles.container}>
-      {competitions.length === 0 && <Text>No competitions found!</Text>}
-      <FlatList
-        style={styles.list}
-        data={competitions}
-        renderItem={({ item }) => {
-          console.log("rendering button for " + item.name);
-          return (
+      <Text style={styles.h1}>PronosApp</Text>
+      <Text style={styles.h2}>Tournois: {competitions.length}</Text>
+      
+      {competitions.length === 0 ? (
+        <View style={{ padding: 20, alignItems: 'center' }}>
+          <Text>Aucune compétition</Text>
+        </View>
+      ) : (
+        <FlatList
+          style={styles.list}
+          data={competitions}
+          renderItem={({ item }) => (
             <View style={styles.padded}>
               <Button
                 title={item.name}
@@ -26,9 +31,10 @@ export default function Competitions() {
                 }}
               />
             </View>
-          );
-        }}
-      />
+          )}
+          keyExtractor={(item) => item.id?.toString() || ''}
+        />
+      )}
     </View>
   );
 }

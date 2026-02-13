@@ -2,15 +2,15 @@ import { Bettor } from "@/types";
 
 export const bettors : Bettor[] = [
     {
-        name : "Remy",
+        name : "Noa",
         id : 1,
     },
     {
-        name : "Bob",
+        name : "Clément",
         id : 2,
     },
     {
-        name : "Alice",
+        name : "Fabien",
         id : 3,
     },
 ]
