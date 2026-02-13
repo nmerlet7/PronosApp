@@ -6,17 +6,31 @@ import React, {
     createContext,
     useContext,
     useMemo,
+    useState,
 } from "react";
 
 export type DataContextValue = {
   competitions: Competition[];
   bettors: Bettor[];
+  addBettor: (bettor: Bettor) => void;
 };
 
 const DataContext = createContext<DataContextValue | undefined>(undefined);
 
 export function DataProvider({ children }: PropsWithChildren) {
-  return <DataContext.Provider value={{ competitions, bettors }}>{children}</DataContext.Provider>;
+  const [bettorsList, setBettors] = useState<Bettor[]>(bettors);
+  
+  const addBettor = (bettor: Bettor) => {
+    setBettors(prev => [...prev, bettor]);
+  };
+  
+  const value = useMemo(() => ({
+    competitions,
+    bettors: bettorsList,
+    addBettor
+  }), [competitions, bettorsList]);
+  
+  return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
 }
 
 export function useData(): DataContextValue {

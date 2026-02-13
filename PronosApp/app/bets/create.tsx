@@ -94,10 +94,14 @@ export default function CreateBet() {
       isLocked: false
     };
 
+    // Ajouter le résultat au match pour le marquer comme terminé
+    match.result = result;
+    
     // TODO: Add bet to competition
     console.log('Creating bet:', newBet);
+    console.log('Match updated with result:', match);
     
-    Alert.alert('Succès', 'Pronostic enregistré avec succès!');
+    Alert.alert('Succès', 'Pronostic enregistré et match terminé!');
     router.back();
   };
 

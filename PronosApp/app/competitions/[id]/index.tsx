@@ -14,7 +14,7 @@ export default function CompetitionRanking() {
   console.log('Global ID:', globalParams.id);
   console.log('Final ID:', id);
   const router = useRouter();
-  const { competitions, bettors } = useData();
+  const { competitions, bettors, addBettor } = useData();
   
   const [selectedBettor, setSelectedBettor] = useState<Bettor | null>(null);
   const [showBettorModal, setShowBettorModal] = useState(false);
@@ -128,7 +128,8 @@ export default function CompetitionRanking() {
       totalPoints: 0
     };
 
-    // TODO: Add bettor to data context
+    // Add bettor to data context
+    addBettor(newBettor);
     console.log('Creating bettor:', newBettor);
     
     setNewBettorName('');
