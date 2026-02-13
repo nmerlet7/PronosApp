@@ -1,12 +1,18 @@
 import { useData } from "@/context/DataContext";
 import { styles } from "@/styles";
-import { useLocalSearchParams, useRouter } from "expo-router";
+import { useLocalSearchParams, useGlobalSearchParams, useRouter } from "expo-router";
 import { FlatList, Text, View, TouchableOpacity, Modal, TextInput, Alert } from "react-native";
 import { useState } from "react";
 import { Bettor, RankingEntry, PointsBreakdown } from "@/types";
 
 export default function CompetitionRanking() {
-  const { id } = useLocalSearchParams<{ id: string }>();
+  const { id: localId } = useLocalSearchParams<{ id: string }>();
+  const globalParams = useGlobalSearchParams();
+  const id = localId || globalParams.id as string;
+  
+  console.log('Local ID:', localId);
+  console.log('Global ID:', globalParams.id);
+  console.log('Final ID:', id);
   const router = useRouter();
   const { competitions, bettors } = useData();
   
@@ -16,6 +22,11 @@ export default function CompetitionRanking() {
   const [newBettorName, setNewBettorName] = useState('');
   
   const competition = competitions.find(c => c.id === parseInt(id));
+  
+  console.log('[CLASSEMENT] ID from params:', id);
+  console.log('[CLASSEMENT] Parsed ID:', parseInt(id));
+  console.log('[CLASSEMENT] Available competitions:', competitions.map(c => ({ id: c.id, name: c.name })));
+  console.log('[CLASSEMENT] Competition found:', competition?.name);
   
   if (!competition) {
     return (

@@ -1,12 +1,18 @@
 import { useData } from "@/context/DataContext";
 import { styles } from "@/styles";
-import { useLocalSearchParams, useRouter } from "expo-router";
+import { useLocalSearchParams, useGlobalSearchParams, useRouter } from "expo-router";
 import { FlatList, Text, View, TouchableOpacity, Modal, TextInput, Alert, ScrollView } from "react-native";
 import { useState } from "react";
 import { Match, Team, Result, Score } from "@/types";
 
 export default function CompetitionMatches() {
-  const { id } = useLocalSearchParams<{ id: string }>();
+  const { id: localId } = useLocalSearchParams<{ id: string }>();
+  const globalParams = useGlobalSearchParams();
+  const id = localId || globalParams.id as string;
+  
+  console.log('[MATCHES] Local ID:', localId);
+  console.log('[MATCHES] Global ID:', globalParams.id);
+  console.log('[MATCHES] Final ID:', id);
   const router = useRouter();
   const { competitions } = useData();
   
@@ -26,6 +32,13 @@ export default function CompetitionMatches() {
   
   const competition = competitions.find(c => c.id === parseInt(id));
   
+  console.log('ID from params:', id);
+  console.log('Parsed ID:', parseInt(id));
+  console.log('Available competitions:', competitions.map(c => ({ id: c.id, name: c.name })));
+  console.log('Competition found:', competition?.name);
+  console.log('Matches count:', competition?.matches.length);
+  console.log('Matches:', competition?.matches);
+  
   if (!competition) {
     return (
       <View style={styles.container}>
@@ -35,6 +48,10 @@ export default function CompetitionMatches() {
   }
 
   const handleMatchPress = (match: Match) => {
+    console.log('Match clicked:', match);
+    console.log('Has result:', !!match.result);
+    console.log('Match status:', getMatchStatus(match));
+    console.log('Should show bet button?', !match.result);
     setSelectedMatch(match);
   };
 
@@ -52,8 +69,17 @@ export default function CompetitionMatches() {
       return;
     }
 
-    // TODO: Add match to competition
-    console.log('Creating match:', { ...newMatch, homeTeam, awayTeam });
+    // Ajouter le match à la compétition
+    const newMatchObj = {
+      id: Date.now(),
+      home: homeTeam,
+      away: awayTeam,
+      date: newMatch.date || new Date().toISOString(),
+      name: newMatch.name
+    };
+    
+    competition.matches.push(newMatchObj);
+    console.log('Match created and added:', newMatchObj);
     
     setNewMatch({ name: '', homeTeamId: '', awayTeamId: '', date: '' });
     setShowCreateModal(false);
@@ -73,11 +99,12 @@ export default function CompetitionMatches() {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.h1}>{competition.name}</Text>
+    <View style={{ flex: 1, backgroundColor: '#F3F4F6' }}>
+      <Text style={[styles.h1, { padding: 16, backgroundColor: 'white', marginBottom: 8 }]}>{competition.name}</Text>
       
       <FlatList
         data={competition.matches}
+        style={{ flex: 1, paddingHorizontal: 16 }}
         renderItem={({ item }) => (
           <TouchableOpacity 
             style={[styles.padded, { backgroundColor: 'white', marginVertical: 4, borderRadius: 8 }]}
@@ -182,6 +209,19 @@ export default function CompetitionMatches() {
               >
                 <Text style={{ color: 'white', fontWeight: 'bold' }}>Fermer</Text>
               </TouchableOpacity>
+
+              {!selectedMatch.result && (
+                <TouchableOpacity
+                  style={{ backgroundColor: '#10B981', padding: 12, borderRadius: 8, alignItems: 'center', marginTop: 12 }}
+                  onPress={() => {
+                    console.log('Betting button pressed for match:', selectedMatch);
+                    setSelectedMatch(null);
+                    router.push(`/bets/create?id=${selectedMatch.id}&competitionId=${competition.id}`);
+                  }}
+                >
+                  <Text style={{ color: 'white', fontWeight: 'bold' }}>Parier sur ce match</Text>
+                </TouchableOpacity>
+              )}
             </View>
           </View>
         )}

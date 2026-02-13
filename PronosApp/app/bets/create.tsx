@@ -6,7 +6,7 @@ import { View, Text, TouchableOpacity, Modal, TextInput, Alert, ScrollView } fro
 import { Match, Bettor, Result, Score } from "@/types";
 
 export default function CreateBet() {
-  const { id } = useLocalSearchParams<{ id: string }>();
+  const { id, competitionId } = useLocalSearchParams<{ id: string; competitionId?: string }>();
   const router = useRouter();
   const { competitions, bettors } = useData();
   
@@ -22,7 +22,9 @@ export default function CreateBet() {
     fullTimeAway: ''
   });
 
-  const competition = competitions.find(c => c.matches.some(m => m.id === parseInt(id)));
+  const competition = competitionId 
+    ? competitions.find(c => c.id === parseInt(competitionId))
+    : competitions.find(c => c.matches.some(m => m.id === parseInt(id)));
   const match = competition?.matches.find(m => m.id === parseInt(id));
 
   if (!match) {

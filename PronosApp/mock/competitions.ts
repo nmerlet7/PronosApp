@@ -209,4 +209,61 @@ premierLeague.matches = [
     }
 ]
 
+// Ajouter les matchs futurs pour la Ligue 1
+const futureLigue1Matches = [
+    {
+        id : 14,
+        home : ligue1.teams[0],
+        away : ligue1.teams[3],
+        date : "2026-02-15T20:00:00"
+    },
+    {
+        id : 15,
+        home : ligue1.teams[1],
+        away : ligue1.teams[0],
+        date : "2026-02-16T15:00:00"
+    },
+    {
+        id : 16,
+        home : ligue1.teams[3],
+        away : ligue1.teams[2],
+        date : "2026-02-17T19:00:00"
+    }
+]
+
+ligue1.matches = [...ligue1.matches, ...futureLigue1Matches]
+
+// Match créé manuellement pour tester
+ligue1.matches.push({
+    id: 1770973197759,
+    home: ligue1.teams[0], // PSG
+    away: ligue1.teams[3], // Nantes
+    date: "2026-02-13T08:59:57.759Z",
+    name: "PSG - NANTES"
+});
+
+// Matchs futurs pour la Premier League
+const futurePremierLeagueMatches = [
+    {
+        id : 24,
+        home : premierLeague.teams[0],
+        away : premierLeague.teams[4],
+        date : "2026-02-15T21:00:00"
+    },
+    {
+        id : 25,
+        home : premierLeague.teams[1],
+        away : premierLeague.teams[0],
+        date : "2026-02-16T16:30:00"
+    },
+    {
+        id : 26,
+        home : premierLeague.teams[3],
+        away : premierLeague.teams[1],
+        date : "2026-02-17T20:45:00"
+    }
+]
+
+premierLeague.matches = [...premierLeague.matches, ...futurePremierLeagueMatches]
+
 export const competitions : Competition[] = [ligue1, premierLeague]
