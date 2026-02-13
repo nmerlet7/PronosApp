@@ -1,13 +1,7 @@
 import { bettors } from "@/mock/bettors";
 import { competitions } from "@/mock/competitions";
 import { Bettor, Competition } from "@/types";
-import React, {
-    PropsWithChildren,
-    createContext,
-    useContext,
-    useMemo,
-    useState,
-} from "react";
+import React, { PropsWithChildren, createContext, useContext, useMemo, useState } from "react";
 
 export type DataContextValue = {
   competitions: Competition[];

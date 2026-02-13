@@ -1,50 +1,154 @@
-# Welcome to your Expo app 👋
+# 🏆 PronosApp
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Application mobile de gestion de pronostics sportifs créée avec React Native et Expo.
 
-## Get started
+## 📱 Description
 
-1. Install dependencies
+PronosApp est une application complète permettant de :
+- Créer et gérer des tournois de pronostics
+- Ajouter des compétitions et des matchs
+- Gérer des utilisateurs (parieurs)
+- Suivre les classements et les points
+- Faire des pronostics sur les matchs
 
-   ```bash
-   npm install
-   ```
+## 🚀 Fonctionnalités
 
-2. Start the app
+### 🏆 Gestion des tournois
+- Création de tournois personnalisés
+- Suivi du statut (à venir, en cours, terminé)
+- Interface intuitive de gestion
 
-   ```bash
-   npx expo start
-   ```
+### ⚽ Gestion des compétitions
+- Création de compétitions
+- Ajout de matchs avec équipes et dates
+- Organisation par catégories
 
-In the output, you'll find options to open the app in a
+### 👤 Gestion des parieurs
+- Création de profils de parieurs
+- Suivi des points et classements
+- Historique des pronostics
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### 📊 Suivi des pronostics
+- Interface de pronostication simple
+- Calcul automatique des points
+- Classements en temps réel
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 🛠️ Stack Technique
 
-## Get a fresh project
+- **Framework**: React Native avec Expo
+- **Navigation**: Expo Router (file-based routing)
+- **Stockage**: AsyncStorage pour les données locales
+- **Langage**: TypeScript
+- **UI**: React Native components avec styles personnalisés
 
-When you're ready, run:
+## 📦 Dépendances principales
 
+- `expo` - Plateforme de développement
+- `expo-router` - Navigation par fichiers
+- `@react-native-async-storage/async-storage` - Stockage local
+- `react-native-safe-area-context` - Gestion des zones sécurisées
+- `@react-navigation/native` - Navigation
+
+## 🚀 Installation
+
+1. Clonez le repository :
 ```bash
-npm run reset-project
+git clone <repository-url>
+cd PronosApp
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. Installez les dépendances :
+```bash
+npm install
+```
 
-## Learn more
+3. Démarrez l'application :
+```bash
+npx expo start
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## 📱 Plateformes supportées
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- **iOS** - Simulateur et appareils physiques
+- **Android** - Émulateur et appareils physiques  
+- **Web** - Navigateur moderne
 
-## Join the community
+## 🎯 Utilisation
 
-Join our community of developers creating universal apps.
+### Démarrage rapide
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+1. Lancez l'application
+2. Créez votre premier tournoi avec le bouton `➕`
+3. Ajoutez des utilisateurs (parieurs)
+4. Créez des compétitions et matchs
+5. Commencez à faire des pronostics !
+
+### Navigation
+
+L'application utilise une navigation par fichiers intuitive :
+- `/` - Accueil et gestion des tournois
+- `/competitions` - Liste des compétitions
+- `/competitions/[id]` - Détails d'une compétition
+- `/bettors` - Gestion des parieurs
+- `/bets` - Création de pronostics
+
+## 🏗️ Structure du projet
+
+```
+PronosApp/
+├── app/
+│   ├── (home)/           # Navigation tab principale
+│   ├── competitions/      # Gestion des compétitions
+│   ├── bettors/          # Gestion des parieurs
+│   ├── bets/             # Gestion des pronostics
+│   └── _layout.tsx       # Layout racine
+├── context/              # Contexte global de données
+├── assets/               # Images et ressources
+└── types/                # Définitions TypeScript
+```
+
+## 🔧 Configuration
+
+### Variables d'environnement
+
+Le projet utilise la configuration par défaut d'Expo. Pour des fonctionnalités avancées, vous pouvez ajouter un fichier `app.config.js`.
+
+### Personnalisation
+
+- **Thème**: Les couleurs et styles sont définis dans les composants
+- **Icônes**: Utilisation d'emojis pour une interface légère
+- **Animations**: React Native Reanimated pour les transitions
+
+## 🤝 Contribuer
+
+1. Fork le projet
+2. Créez une branche (`git checkout -b feature/nouvelle-fonctionnalite`)
+3. Commitez vos changements (`git commit -am 'Ajout nouvelle fonctionnalité'`)
+4. Pushez vers la branche (`git push origin feature/nouvelle-fonctionnalite`)
+5. Ouvrez une Pull Request
+
+## 📝 Notes de développement
+
+- L'application utilise TypeScript pour la sécurité du typage
+- Les données sont stockées localement avec AsyncStorage
+- L'interface est optimisée pour mobile avec des composants natifs
+- Le routing utilise Expo Router pour une navigation fluide
+
+## 🐛 Débuggage
+
+En cas de problème :
+1. Vérifiez les logs avec `npx expo start --dev-client`
+2. Nettoyez le cache avec `npx expo start -c`
+3. Réinitialisez le projet avec `npm run reset-project`
+
+## 📄 Licence
+
+Ce projet est sous licence MIT.
+
+## 📞 Contact
+
+Pour toute question ou suggestion, n'hésitez pas à contacter l'équipe de développement.
+
+---
+
+**PronosApp** - Faites des pronostics, remportez des victoires ! 🏆
