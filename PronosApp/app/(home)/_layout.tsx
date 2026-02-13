@@ -19,9 +19,18 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Competitions',
+          title: 'Accueil',
           tabBarIcon: ({ color, focused }) => (
             <Ionicons name={focused ? 'home-sharp' : 'home-outline'} color={color} size={24} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="competitions"
+        options={{
+          title: 'Compétitions',
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons name={focused ? 'trophy' : 'trophy-outline'} color={color} size={24} />
           ),
         }}
       />

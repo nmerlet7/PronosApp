@@ -23,12 +23,32 @@ export default function CompetitionsList() {
               style={[styles.padded, { backgroundColor: 'white', marginVertical: 4, borderRadius: 8 }]}
               onPress={() => router.push(`/competitions/${item.id}`)}
             >
-              <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#3B82F6' }}>
-                {item.name}
-              </Text>
-              <Text style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
-                {item.teams.length} équipes • {item.matches.length} matchs
-              </Text>
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                <View style={{ flex: 1 }}>
+                  <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#3B82F6' }}>
+                    {item.name}
+                  </Text>
+                  <Text style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
+                    {item.teams.length} équipes • {item.matches.length} matchs
+                  </Text>
+                </View>
+                <TouchableOpacity
+                  style={{
+                    backgroundColor: '#10B981',
+                    paddingHorizontal: 12,
+                    paddingVertical: 6,
+                    borderRadius: 6
+                  }}
+                  onPress={(e) => {
+                    e.stopPropagation();
+                    router.push(`/competitions/ranking/${item.id}`);
+                  }}
+                >
+                  <Text style={{ color: 'white', fontSize: 12, fontWeight: 'bold' }}>
+                    🏆 Classement
+                  </Text>
+                </TouchableOpacity>
+              </View>
             </TouchableOpacity>
           )}
           keyExtractor={(item) => item.id?.toString() || ''}
